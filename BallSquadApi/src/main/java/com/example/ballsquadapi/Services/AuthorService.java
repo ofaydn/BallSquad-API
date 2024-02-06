@@ -20,7 +20,7 @@ public class AuthorService {
     public void fetchAndSaveAuthors(String query) {
         AuthorResponse response = client.getAuthors(query);
         for (AuthorDoc doc : response.getDocs()) {
-            Author author = new Author(doc.getKey(), doc.getType(), doc.getName(), doc.getBirth_date(), doc.getTop_work(), doc.getWork_count(), doc.get_version_());
+            Author author = new Author(doc.getKey(), doc.getName());
             repository.save(author);
         }
     }

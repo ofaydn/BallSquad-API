@@ -1,7 +1,8 @@
 package com.example.ballsquadapi.Controllers;
 
+import com.example.ballsquadapi.Client.OpenLibraryClient;
 import com.example.ballsquadapi.Models.Author;
-import com.example.ballsquadapi.Client.AuthorService;
+import com.example.ballsquadapi.Models.AuthorResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,15 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/authors")
 public class MainController {
 
-    private final AuthorService authorService;
+    private final OpenLibraryClient client;
 
-    public MainController(AuthorService authorService) {
-        this.authorService = authorService;
+    public MainController(OpenLibraryClient client) {
+        this.client = client;
     }
-
     @GetMapping
-    public Author getAuthor(@RequestParam("q") String name) {
-        return authorService.getAuthor(name);
+    public AuthorResponse getAuthors(@RequestParam("q") String query) {
+        return client.getAuthors(query);
     }
 }
 

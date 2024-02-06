@@ -1,15 +1,12 @@
-package com.example.ballsquadapi;
-
-import com.example.ballsquadapi.Models.Author;
+package com.example.ballsquadapi.Models;
 
 import java.util.List;
 
 public class AuthorResponse {
-
     private int numFound;
     private int start;
     private boolean numFoundExact;
-
+    private List<AuthorDoc> docs;
     public int getNumFound() {
         return numFound;
     }
@@ -34,14 +31,14 @@ public class AuthorResponse {
         this.numFoundExact = numFoundExact;
     }
 
-    public List<Author> getDocs() {
+    public List<AuthorDoc> getDocs() {
         return docs;
     }
 
-    public void setDocs(List<Author> docs) {
+    public void setDocs(List<AuthorDoc> docs) {
         this.docs = docs;
     }
 
-    private List<Author> docs;
+
 
 }

@@ -26,13 +26,17 @@ public class MainController {
     @GetMapping
     public List<Author> getAuthors(@RequestParam("q") String query) {
         List<Author> authors = repository.findByAuthorName(query);
+        System.out.println("authors: " + authors.size());
+        System.out.println("query: " + query);
         if (authors.isEmpty()) {
             AuthorResponse response = client.getAuthors(query);
             if (response.getNumFound() > 0) {
                 for(AuthorDoc doc : response.getDocs()) {
                     Author author = new Author(doc.getKey(), doc.getName());
-                    authors.add(author);
-                    repository.save(author);
+                    if(!repository.existsByAuthorName(author.getAuthorName())) {
+                        authors.add(author);
+                        repository.save(author);
+                    }
                 }
             }
         }

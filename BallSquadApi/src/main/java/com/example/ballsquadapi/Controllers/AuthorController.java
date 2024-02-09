@@ -31,7 +31,7 @@ public class AuthorController {
         System.out.println("query: " + query);
         if (authors.isEmpty()) {
             AuthorResponse response = client.getAuthors(query);
-            if (response.getNumFound() > 0) {
+            if (response !=null && response.getNumFound() > 0) {
                 for(AuthorDoc doc : response.getDocs()) {
                     Author author = new Author(doc.getKey(), doc.getName());
                     if(!repository.existsByAuthorName(author.getAuthorName())) {

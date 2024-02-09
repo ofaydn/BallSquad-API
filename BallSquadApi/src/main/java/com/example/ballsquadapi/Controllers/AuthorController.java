@@ -14,12 +14,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/authors")
-public class MainController {
+public class AuthorController {
 
     private final OpenLibraryClient client;
     private  final AuthorRepository repository;
 
-    public MainController(OpenLibraryClient client, AuthorRepository repository) {
+
+    public AuthorController(OpenLibraryClient client, AuthorRepository repository) {
         this.client = client;
         this.repository = repository;
     }

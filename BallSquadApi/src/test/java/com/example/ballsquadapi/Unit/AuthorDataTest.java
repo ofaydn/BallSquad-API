@@ -1,6 +1,7 @@
 package com.example.ballsquadapi.Unit;
 
 import com.example.ballsquadapi.Controllers.AuthorController;
+import com.example.ballsquadapi.DTOs.AuthorResponse;
 import com.example.ballsquadapi.Models.*;
 import com.example.ballsquadapi.Repositories.AuthorRepository;
 import com.example.ballsquadapi.Client.OpenLibraryClient;

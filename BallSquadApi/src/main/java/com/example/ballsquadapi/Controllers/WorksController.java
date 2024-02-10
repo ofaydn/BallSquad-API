@@ -2,7 +2,7 @@ package com.example.ballsquadapi.Controllers;
 
 import com.example.ballsquadapi.Client.OpenLibraryClient;
 import com.example.ballsquadapi.Models.AuthorWorks;
-import com.example.ballsquadapi.Models.AuthorWorksResponse;
+import com.example.ballsquadapi.DTOs.AuthorWorksResponse;
 import com.example.ballsquadapi.Models.WorksEntry;
 import com.example.ballsquadapi.Repositories.AuthorRepository;
 import com.example.ballsquadapi.Repositories.AuthorWorkRepository;

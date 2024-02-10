@@ -1,7 +1,7 @@
 package com.example.ballsquadapi.Client;
 
-import com.example.ballsquadapi.Models.AuthorResponse;
-import com.example.ballsquadapi.Models.AuthorWorksResponse;
+import com.example.ballsquadapi.DTOs.AuthorResponse;
+import com.example.ballsquadapi.DTOs.AuthorWorksResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

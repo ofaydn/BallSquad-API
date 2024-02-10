@@ -1,4 +1,6 @@
-package com.example.ballsquadapi.Models;
+package com.example.ballsquadapi.DTOs;
+
+import com.example.ballsquadapi.Models.AuthorDoc;
 
 import java.util.List;
 

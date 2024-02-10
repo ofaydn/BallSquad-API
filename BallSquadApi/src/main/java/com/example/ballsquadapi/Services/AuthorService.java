@@ -3,9 +3,12 @@ package com.example.ballsquadapi.Services;
 import com.example.ballsquadapi.Client.OpenLibraryClient;
 import com.example.ballsquadapi.Models.Author;
 import com.example.ballsquadapi.Models.AuthorDoc;
-import com.example.ballsquadapi.Models.AuthorResponse;
+import com.example.ballsquadapi.DTOs.AuthorResponse;
 import com.example.ballsquadapi.Repositories.AuthorRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class AuthorService {
@@ -17,11 +20,17 @@ public class AuthorService {
         this.repository = repository;
     }
 
-    public void fetchAndSaveAuthors(String query) {
+    public List<Author> fetchAndSaveAuthorsFromOpenLibrary(String query) {
+        List<Author> authors = new ArrayList<>();
         AuthorResponse response = client.getAuthors(query);
         for (AuthorDoc doc : response.getDocs()) {
             Author author = new Author(doc.getKey(), doc.getName());
-            repository.save(author);
+            if (!repository.existsByAuthorName(author.getAuthorName())) {
+                repository.save(author);
+                authors.add(author);
+            }
         }
+        return authors;
     }
 }
+

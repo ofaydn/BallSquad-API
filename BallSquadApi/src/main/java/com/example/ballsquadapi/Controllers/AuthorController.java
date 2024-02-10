@@ -2,9 +2,8 @@ package com.example.ballsquadapi.Controllers;
 
 import com.example.ballsquadapi.Client.OpenLibraryClient;
 import com.example.ballsquadapi.Models.Author;
-import com.example.ballsquadapi.Models.AuthorDoc;
-import com.example.ballsquadapi.Models.AuthorResponse;
 import com.example.ballsquadapi.Repositories.AuthorRepository;
+import com.example.ballsquadapi.Services.AuthorService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,30 +17,20 @@ public class AuthorController {
 
     private final OpenLibraryClient client;
     private  final AuthorRepository repository;
+    private final AuthorService authorService;
 
 
-    public AuthorController(OpenLibraryClient client, AuthorRepository repository) {
+    public AuthorController(OpenLibraryClient client, AuthorRepository repository, AuthorService authorService) {
         this.client = client;
         this.repository = repository;
+        this.authorService = authorService;
     }
     @GetMapping
     public List<Author> getAuthors(@RequestParam("q") String query) {
         List<Author> authors = repository.findByAuthorName(query);
-        System.out.println("authors: " + authors.size());
-        System.out.println("query: " + query);
         if (authors.isEmpty()) {
-            AuthorResponse response = client.getAuthors(query);
-            if (response !=null && response.getNumFound() > 0) {
-                for(AuthorDoc doc : response.getDocs()) {
-                    Author author = new Author(doc.getKey(), doc.getName());
-                    if(!repository.existsByAuthorName(author.getAuthorName())) {
-                        authors.add(author);
-                        repository.save(author);
-                    }
-                }
-            }
+              authors = authorService.fetchAndSaveAuthorsFromOpenLibrary(query) ;
         }
-
         return authors;
     }
 

@@ -23,7 +23,7 @@ What does application do?
   they are saved to database.
 
   Application also offers log tracking. Which basically
-  saves queries to the database. Logs are not accessible through
+  saves queries and times to the database. Logs are not accessible through
   application itself. You have to display them using a database
   designing tool with SQL commands. Log table is called query_logs.  
   

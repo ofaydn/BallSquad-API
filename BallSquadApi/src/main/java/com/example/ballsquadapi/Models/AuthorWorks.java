@@ -9,25 +9,22 @@ public class AuthorWorks {
     @Column(name = "id")
     private Long id;
 
-    public String getAuthorKey() {
-        return authorKey;
-    }
-
-    public void setAuthorKey(String authorKey) {
-        this.authorKey = authorKey;
-    }
-
-    public String getAuthorWork() {
-        return authorWork;
-    }
-
-    public void setAuthorWork(String authorWork) {
-        this.authorWork = authorWork;
-    }
-
     @Column(name = "author_key")
     private String authorKey;
 
     @Column(name = "author_work")
     private String authorWork;
+
+    public String getAuthorKey() {
+        return authorKey;
+    }
+    public void setAuthorKey(String authorKey) {
+        this.authorKey = authorKey;
+    }
+    public String getAuthorWork() {
+        return authorWork;
+    }
+    public void setAuthorWork(String authorWork) {
+        this.authorWork = authorWork;
+    }
 }

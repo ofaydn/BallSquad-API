@@ -2,13 +2,10 @@
 <databaseChangeLog
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
-        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
-http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
-http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
-    <changeSet id="20240108566" author="ofaydn">
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="20240108567" author="ofaydn">
+
         <createTable tableName="authors">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" primaryKeyName="authors_id_pk" />
@@ -17,25 +14,24 @@ http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibas
                 <constraints unique="true" uniqueConstraintName="author_key_unq" />
             </column>
             <column name="author_name" type="varchar(255)">
-
             </column>
         </createTable>
+
         <createTable tableName="author_works">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" primaryKeyName="author_works_id_pk" />
             </column>
             <column name="author_key" type="varchar(255)">
-
             </column>
             <column name="author_work" type="varchar(255)">
             </column>
         </createTable>
+
         <createTable tableName="query_logs">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" primaryKeyName="query_logs_id_pk" />
             </column>
             <column name="query" type="varchar(255)">
-
             </column>
             <column name="timestamp" type="timestamp">
             </column>

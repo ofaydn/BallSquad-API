@@ -1,6 +1,4 @@
 package com.example.ballsquadapi.Models;
-
-
 import jakarta.persistence.*;
 import java.util.Objects;
 import jakarta.persistence.GeneratedValue;
@@ -22,16 +20,13 @@ public class Author {
     private String authorName;
 
     public Author() {}
-
     public Author(String authorKey, String authorName) {
         this.authorKey = authorKey;
         this.authorName = authorName;
     }
-
     public String getAuthorKey() {
         return authorKey;
     }
-
     public void setAuthorKey(String author_key) {
         this.authorKey = author_key;
     }
@@ -40,22 +35,6 @@ public class Author {
     }
     public String getAuthorName() {
         return authorName;
-    }
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof Author))
-            return false;
-        Author author = (Author) o;
-        return Objects.equals(this.id, author.id) && Objects.equals(this.authorKey, author.authorKey)
-                && Objects.equals(this.authorName, author.authorName);
-
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.id, this.authorKey, this.authorName);
     }
     @Override
     public String toString() {

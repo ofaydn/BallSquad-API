@@ -21,4 +21,9 @@ What does application do?
   This endpoint brings you works of the author you've queried.
   Same as first endpoint if author works are not in  the database, 
   they are saved to database.
+
+  Application also offers log tracking. Which basically
+  saves queries and times to the database. Logs are not accessible through
+  application itself. You have to display them using a database
+  designing tool with SQL commands. Log table is called query_logs.  
   

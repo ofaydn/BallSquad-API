@@ -8,7 +8,7 @@
 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
 http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
 http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
-    <changeSet id="2024010823" author="ofaydn">
+    <changeSet id="20240108566" author="ofaydn">
         <createTable tableName="authors">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" primaryKeyName="authors_id_pk" />
@@ -30,9 +30,20 @@ http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibas
             <column name="author_work" type="varchar(255)">
             </column>
         </createTable>
+        <createTable tableName="query_logs">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="query_logs_id_pk" />
+            </column>
+            <column name="query" type="varchar(255)">
+
+            </column>
+            <column name="timestamp" type="timestamp">
+            </column>
+        </createTable>
 
         <addAutoIncrement tableName="authors" columnName="id" columnDataType="bigint" startWith="1"  />
         <addAutoIncrement tableName="author_works" columnName="id" columnDataType="bigint" startWith="1"  />
+        <addAutoIncrement tableName="query_logs" columnName="id" columnDataType="bigint" startWith="1"  />
         <createSequence sequenceName="hibernate_sequence" incrementBy="1" startValue="1" />
 
     </changeSet>

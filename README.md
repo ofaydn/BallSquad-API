@@ -1,7 +1,8 @@
 Preresequities
   First you need to setup a MySql server on your device.
   Then start your server on 3306 port.
-  Create a database named "ballsquad"
+  Create a database named "ballsquad". Username and 
+  password should be both "root".
 
 How to run application?
   Open project file named BallsquadApi on IntellijIDEA.

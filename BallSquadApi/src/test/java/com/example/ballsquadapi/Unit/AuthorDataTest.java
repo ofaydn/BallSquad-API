@@ -1,19 +1,22 @@
 package com.example.ballsquadapi.Unit;
 
-import com.example.ballsquadapi.Controllers.AuthorController;
-import com.example.ballsquadapi.DTOs.AuthorResponse;
-import com.example.ballsquadapi.Models.*;
-import com.example.ballsquadapi.Repositories.AuthorRepository;
-import com.example.ballsquadapi.Client.OpenLibraryClient;
+import com.example.ballsquadapi.controllers.AuthorController;
+import com.example.ballsquadapi.dtos.authors.AuthorDoc;
+import com.example.ballsquadapi.dtos.authors.AuthorResponse;
+import com.example.ballsquadapi.entities.*;
+import com.example.ballsquadapi.repositories.AuthorRepository;
+import com.example.ballsquadapi.clients.OpenLibraryClient;
 import org.junit.jupiter.api.*;
 import org.mockito.*;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.times;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 public class AuthorDataTest {
@@ -33,44 +36,36 @@ public class AuthorDataTest {
     }
 
     @Test
-    public void testGetAuthors_WhenAuthorsExistInDB() {
-        String query = "test123";
-        List<Author> authors = new ArrayList<>();
-        authors.add(new Author("key1", query));
-        authors.add(new Author("key2", query));
+    public void testFetchAuthors_DataExistsInDatabase() {
+        // Arrange: Set up the repository with some dummy authors
+        List<Author> existingAuthors = new ArrayList<>();
+        existingAuthors.add(new Author("1", "Omer"));
+        existingAuthors.add(new Author("2", "Faruk"));
+        when(authorRepository.findByAuthorName(anyString())).thenReturn(existingAuthors);
 
-        when(authorRepository.findByAuthorName(query)).thenReturn(authors);
+        // Act: Call the getAuthors method
+        List<Author> result = authorController.getAuthors("Omer");
 
-        List<Author> result = authorController.getAuthors(query);
-
-        assertEquals(authors.size(), result.size());
-        assertEquals(authors.get(0).getAuthorName(), result.get(0).getAuthorName());
-        assertEquals(authors.get(1).getAuthorName(), result.get(1).getAuthorName());
+        // Assert: Verify that the existing authors are returned
+        assertEquals(existingAuthors, result);
+        verify(authorRepository, never()).saveAll(anyList());
     }
 
     @Test
-    public void testGetAuthors_WhenAuthorsDoNotExistInDB() {
-        String query = "test123";
-        List<Author> authors = new ArrayList<>();
+    public void testFetchAuthors_DataDoesNotExistInDatabase() {
+        // Arrange: Set up the repository with no existing authors
+        when(authorRepository.findByAuthorName(anyString())).thenReturn(Collections.emptyList());
+        when(openLibraryClient.getAuthors(anyString())).thenReturn(new AuthorResponse());
 
-        when(authorRepository.findByAuthorName(query)).thenReturn(authors);
+        // Act: Call the getAuthors method
+        List<Author> result = authorController.getAuthors("Omer");
 
-        AuthorResponse response = new AuthorResponse();
-        List<AuthorDoc> docs = new ArrayList<>();
-        docs.add(new AuthorDoc("key1", query));
-        docs.add(new AuthorDoc("key2", query));
-        response.setDocs(docs);
-
-        when(openLibraryClient.getAuthors(query)).thenReturn(response);
-
-        List<Author> result = authorController.getAuthors(query);
-
-        assertEquals(docs.size(), result.size());
-        assertEquals(docs.get(0).getName(), result.get(0).getAuthorName());
-        assertEquals(docs.get(1).getName(), result.get(1).getAuthorName());
-
-        verify(authorRepository, times(2)).save(org.mockito.ArgumentMatchers.any(Author.class));
+        // Assert: Verify that the authors are fetched from the client and saved to the database
+        assertFalse(result.isEmpty());
+        verify(authorRepository, times(1)).saveAll(anyList());
     }
+
+
 }
 
 

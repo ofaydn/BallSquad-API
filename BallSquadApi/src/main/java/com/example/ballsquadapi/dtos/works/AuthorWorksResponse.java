@@ -1,5 +1,4 @@
-package com.example.ballsquadapi.DTOs;
-import com.example.ballsquadapi.Models.WorksEntry;
+package com.example.ballsquadapi.dtos.works;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;

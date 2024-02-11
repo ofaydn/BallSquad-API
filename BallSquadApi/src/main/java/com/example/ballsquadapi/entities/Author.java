@@ -1,6 +1,5 @@
-package com.example.ballsquadapi.Models;
+package com.example.ballsquadapi.entities;
 import jakarta.persistence.*;
-import java.util.Objects;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 

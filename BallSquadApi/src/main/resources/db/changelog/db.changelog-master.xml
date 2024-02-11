@@ -4,7 +4,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
-    <changeSet id="20240108567" author="ofaydn">
+    <changeSet id="20240108568" author="ofaydn">
 
         <createTable tableName="authors">
             <column name="id" type="bigint">
@@ -27,19 +27,10 @@
             </column>
         </createTable>
 
-        <createTable tableName="query_logs">
-            <column name="id" type="bigint">
-                <constraints primaryKey="true" primaryKeyName="query_logs_id_pk" />
-            </column>
-            <column name="query" type="varchar(255)">
-            </column>
-            <column name="timestamp" type="timestamp">
-            </column>
-        </createTable>
+
 
         <addAutoIncrement tableName="authors" columnName="id" columnDataType="bigint" startWith="1"  />
         <addAutoIncrement tableName="author_works" columnName="id" columnDataType="bigint" startWith="1"  />
-        <addAutoIncrement tableName="query_logs" columnName="id" columnDataType="bigint" startWith="1"  />
         <createSequence sequenceName="hibernate_sequence" incrementBy="1" startValue="1" />
 
     </changeSet>

@@ -1,4 +1,4 @@
-package com.example.ballsquadapi.Models;
+package com.example.ballsquadapi.entities;
 
 import jakarta.persistence.*;
 

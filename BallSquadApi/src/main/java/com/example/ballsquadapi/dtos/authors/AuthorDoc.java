@@ -1,4 +1,4 @@
-package com.example.ballsquadapi.Models;
+package com.example.ballsquadapi.dtos.authors;
 
 public class AuthorDoc {
     private String key;

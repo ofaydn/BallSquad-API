@@ -1,5 +1,5 @@
-package com.example.ballsquadapi.DTOs;
-import com.example.ballsquadapi.Models.AuthorDoc;
+package com.example.ballsquadapi.dtos.authors;
+
 import java.util.List;
 
 public class AuthorResponse {

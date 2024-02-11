@@ -10,20 +10,15 @@ How to run application?
   Liquibase will handle creation of tables.
 
 What does application do?
-  Applicaton offers 2 different endpoints.
+  Applicaton offers 2 different endpoints.Both are POST requests.
 
-  1)localhost:8080/authors?q=(author name)
+  1)localhost:8080/authors?name=(author name)
   This endpoint allows you to make queries for authors in database.
   If database doesn't contain queried author, it will fetch from 
   OpenLibrary website and save it to the database for later searches.
 
-  2)localhost:8080/authors/(author id)/works.json
+  2)localhost:8080/works/(author id)
   This endpoint brings you works of the author you've queried.
   Same as first endpoint if author works are not in  the database, 
   they are saved to database.
-
-  Application also offers log tracking. Which basically
-  saves queries and times to the database. Logs are not accessible through
-  application itself. You have to display them using a database
-  designing tool with SQL commands. Log table is called query_logs.  
   

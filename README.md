@@ -1,4 +1,4 @@
-Prerequisites
+Prerequisites:
   First you need to setup a MySql server on your device.
   Then start your server on 3306 port.
   Create a database named "ballsquad". Username and 

@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface AuthorWorkRepository extends JpaRepository<AuthorWorks, Long> {
     List<AuthorWorks> findByAuthorKey(String authorKey);
-    boolean existsByAuthorKey(String key);
+    boolean existsByAuthorKey(String authorKey);
 }

@@ -14,11 +14,11 @@ public class AuthorController {
     }
     @PostMapping
 
-    public List<Author> getAuthors(@RequestParam("name") String author_name) {
-        if(Objects.equals(author_name, "")) {
+    public List<Author> getAuthors(@RequestParam("authorName") String authorName) {
+        if(Objects.equals(authorName, "")) {
             return null;
         }
-        return authorService.getAuthors(author_name);
+        return authorService.getAuthors(authorName);
     }
 }
 

@@ -6,6 +6,6 @@ import java.util.List;
 
 @Repository
 public interface AuthorRepository extends JpaRepository<Author, Long> {
-    List<Author> findByAuthorName(String authorName);
-    boolean existsByAuthorName(String authorName);
+    List<Author> findByAuthorName(String name);
+    boolean existsByAuthorName(String name);
 }

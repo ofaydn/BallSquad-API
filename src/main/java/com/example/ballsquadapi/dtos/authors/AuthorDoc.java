@@ -1,22 +1,22 @@
 package com.example.ballsquadapi.dtos.authors;
 
 public class AuthorDoc {
-    private String authorKey;
-    private String authorName;
-    public AuthorDoc(String authorKey, String authorName) {
-        this.authorKey = authorKey;
-        this.authorName = authorName;
+    private String key;
+    private String name;
+    public AuthorDoc(String key, String name) {
+        this.key = key;
+        this.name = name;
     }
-    public String getAuthorKey() {
-        return authorKey;
+    public String getKey() {
+        return key;
     }
-    public void setAuthorKey(String authorKey) {
-        this.authorKey = authorKey;
+    public void setKey(String key) {
+        this.key = key;
     }
-    public String getAuthorName() {
-        return authorName;
+    public String getName() {
+        return name;
     }
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
+    public void setName(String name) {
+        this.name = name;
     }
 }

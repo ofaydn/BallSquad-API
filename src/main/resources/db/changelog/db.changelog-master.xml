@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="20240108568" author="ofaydn">
+
+        <createTable tableName="authors">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="authors_id_pk" />
+            </column>
+            <column name="author_key" type="varchar(255)">
+                <constraints unique="true" uniqueConstraintName="author_key_unq" />
+            </column>
+            <column name="author_name" type="varchar(255)">
+            </column>
+        </createTable>
+
+        <createTable tableName="author_works">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="author_works_id_pk" />
+            </column>
+            <column name="author_key" type="varchar(255)">
+            </column>
+            <column name="author_work" type="varchar(255)">
+            </column>
+        </createTable>
+
+
+
+        <addAutoIncrement tableName="authors" columnName="id" columnDataType="bigint" startWith="1"  />
+        <addAutoIncrement tableName="author_works" columnName="id" columnDataType="bigint" startWith="1"  />
+        <createSequence sequenceName="hibernate_sequence" incrementBy="1" startValue="1" />
+
+    </changeSet>
+</databaseChangeLog>

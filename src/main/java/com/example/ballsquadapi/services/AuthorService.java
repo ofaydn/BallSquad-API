@@ -1,0 +1,55 @@
+package com.example.ballsquadapi.services;
+
+import com.example.ballsquadapi.clients.OpenLibraryClient;
+import com.example.ballsquadapi.dtos.authors.AuthorDoc;
+import com.example.ballsquadapi.dtos.authors.AuthorResponse;
+import com.example.ballsquadapi.entities.Author;
+import com.example.ballsquadapi.repositories.AuthorRepository;
+import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class AuthorService {
+    private final OpenLibraryClient client;
+    private final AuthorRepository repository;
+
+    public AuthorService(OpenLibraryClient client, AuthorRepository repository) {
+        this.client = client;
+        this.repository = repository;
+    }
+    public AuthorResponse getAuthorsFromClient(String authorName) {
+        try {
+            return client.getAuthors(authorName);
+        } catch (Exception e) {
+            System.out.println("OpenLibrary error: " + e.getMessage());
+            return null;
+        }
+    }
+    @Transactional
+    public List<Author> getAuthors(String authorName) {
+        List<Author> authors = repository.findByAuthorName(authorName);
+        if (authors.isEmpty()) {
+            authors = fetchAuthors(authorName);
+        }
+        return authors;
+    }
+
+    @Transactional
+    public List<Author> fetchAuthors(String authorName) {
+        List<Author> authors = repository.findByAuthorName(authorName);
+        if (authors.isEmpty()) {
+            AuthorResponse response = getAuthorsFromClient(authorName);
+            for (AuthorDoc doc : response.getDocs()) {
+                Author author = new Author(doc.getAuthorKey(), doc.getAuthorName());
+                if (!authors.contains(author.getAuthorName())) {
+                    authors.add(author);
+                }
+            }
+            repository.saveAll(authors);
+        }
+        return authors;
+    }
+}
+

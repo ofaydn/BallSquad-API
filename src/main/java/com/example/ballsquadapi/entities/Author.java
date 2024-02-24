@@ -26,8 +26,8 @@ public class Author {
     public String getAuthorKey() {
         return authorKey;
     }
-    public void setAuthorKey(String author_key) {
-        this.authorKey = author_key;
+    public void setAuthorKey(String authorKey) {
+        this.authorKey = authorKey;
     }
     public void setAuthorName(String authorName) {
         this.authorName = authorName;

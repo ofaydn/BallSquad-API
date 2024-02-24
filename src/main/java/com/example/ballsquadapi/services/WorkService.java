@@ -20,31 +20,35 @@ public class WorkService {
         this.workRepository = repository;
     }
 
-    public AuthorWorksResponse getAuthorWorksResponse(String authorKey) {
+    public List<AuthorWorks> getAuthorWorks(String authorKey) {
+        List<AuthorWorks> existingWorks = workRepository.findByAuthorKey(authorKey);
+        if (existingWorks.isEmpty()) {
+            List<AuthorWorks> newWorks = fetchAndSaveNewWorks(authorKey);
+            existingWorks.addAll(newWorks);
+        }
+        return existingWorks;
+    }
+
+    private List<AuthorWorks> fetchAndSaveNewWorks(String authorKey) {
+        AuthorWorksResponse response = getAuthorWorksResponse(authorKey);
+        List<AuthorWorks> newWorks = new ArrayList<>();
+        for (WorksEntry entry : response.getEntries()) {
+            AuthorWorks work = new AuthorWorks();
+            work.setAuthorKey(authorKey);
+            work.setAuthorWork(entry.getTitle());
+            newWorks.add(work);
+        }
+        workRepository.saveAll(newWorks);
+        return newWorks;
+    }
+
+    private AuthorWorksResponse getAuthorWorksResponse(String authorKey) {
         try {
             return client.getAuthorWorks(authorKey);
         } catch (Exception e) {
             System.out.println("OpenLibrary error: " + e.getMessage());
             return null;
         }
-    }
-
-    @Transactional
-    public List<AuthorWorks> getAuthorWorks(String authorKey) {
-        List<AuthorWorks> existingWorks = workRepository.findByAuthorKey(authorKey);
-        if (existingWorks.isEmpty()) {
-            AuthorWorksResponse response = getAuthorWorksResponse(authorKey);
-            List<AuthorWorks> newWorks = new ArrayList<>();
-            for (WorksEntry entry : response.getEntries()) {
-                AuthorWorks work = new AuthorWorks();
-                work.setAuthorKey(authorKey);
-                work.setAuthorWork(entry.getTitle());
-                newWorks.add(work);
-            }
-            workRepository.saveAll(newWorks);
-            existingWorks.addAll(newWorks);
-        }
-        return existingWorks;
     }
 
 

@@ -21,37 +21,35 @@ public class AuthorService {
         this.client = client;
         this.repository = repository;
     }
-    public AuthorResponse getAuthorsFromClient(String author_name) {
+    public AuthorResponse getAuthorsFromClient(String authorName) {
         try {
-            return client.getAuthors(author_name);
+            return client.getAuthors(authorName);
         } catch (Exception e) {
             System.out.println("OpenLibrary error: " + e.getMessage());
             return null;
         }
     }
     @Transactional
-    public List<Author> getAuthors(String author_name) {
-        List<Author> authors = repository.findByAuthorName(author_name);
+    public List<Author> getAuthors(String authorName) {
+        List<Author> authors = repository.findByAuthorName(authorName);
         if (authors.isEmpty()) {
-            authors = fetchAuthors(author_name);
+            authors = fetchAuthors(authorName);
         }
         return authors;
     }
 
     @Transactional
-    public List<Author> fetchAuthors(String author_name) {
-        List<Author> authors = repository.findByAuthorName(author_name);
-        if (authors.isEmpty()) {
-            AuthorResponse response = getAuthorsFromClient(author_name);
-            for (AuthorDoc doc : response.getDocs()) {
-                Author author = new Author(doc.getKey(), doc.getName());
-                if (!authors.contains(author.getAuthorName())) {
-                    authors.add(author);
-                }
+    public List<Author> fetchAuthors(String authorName) {
+        List<Author> fetchAuthorList = new ArrayList<>();
+        AuthorResponse response = getAuthorsFromClient(authorName);
+        for (AuthorDoc doc : response.getDocs()) {
+            Author author = new Author(doc.getKey(), doc.getName());
+            if (!fetchAuthorList.contains(author.getAuthorName())) {
+                fetchAuthorList.add(author);
             }
-            repository.saveAll(authors);
         }
-        return authors;
+        repository.saveAll(fetchAuthorList);
+        return fetchAuthorList;
     }
 }
 

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "openLibraryClient", url = "https://openlibrary.org")
 public interface OpenLibraryClient {
     @GetMapping("/search/authors.json")
-    AuthorResponse getAuthors(@RequestParam("q") String author_name);
+    AuthorResponse getAuthors(@RequestParam("q") String authorName);
 
     @GetMapping("/authors/{authorKey}/works.json")
     AuthorWorksResponse getAuthorWorks(@PathVariable("authorKey") String author_key);

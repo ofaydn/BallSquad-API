@@ -52,4 +52,4 @@ This endpoint brings you works of the author you've queried. Same as first endpo
 
 
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+![Logo](https://ibb.co/MhvJ9wr)

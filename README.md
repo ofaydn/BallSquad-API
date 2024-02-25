@@ -49,7 +49,3 @@ This endpoint brings you works of the author you've queried. Same as first endpo
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `authorKey`      | `string` | **Required**. Author Key |
-
-
-
-![Logo](https://i.imgur.com/yC3wnLS.jpeg)

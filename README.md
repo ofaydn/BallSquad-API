@@ -52,4 +52,4 @@ This endpoint brings you works of the author you've queried. Same as first endpo
 
 
 
-![Logo](https://ibb.co/MhvJ9wr)
+![Logo]([https://ibb.co/MhvJ9wr](https://i.ibb.co/cvBsxf0/Businness-Card-page-0001.jpg)https://i.ibb.co/cvBsxf0/Businness-Card-page-0001.jpg)

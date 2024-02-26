@@ -7,23 +7,23 @@ In order to run this project in your local machine you just need Docker installe
 
 First you need to pull mysql image.
 ```bash
-  docker pull mysql
+docker pull mysql
 ```
 Then pull this project
 ```bash
-  docker pull ofaydn/ballsquad_java_app
+docker pull ofaydn/ballsquad_java_app
 ```
 Create a network in docker so both api and mysql can communicate
 ```bash
-  docker network create ballsquad_network
+docker network create ballsquad_network
 ```
 Now its time to run the MySQL server. You have to create with initial root password as "root" and initial database as "ballsquad".
 ```bash
-  docker run -d -it --network ballsquad_network -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=ballsquad --name ballsquad_db_appc mysql
+docker run -d -it --network ballsquad_network -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=ballsquad --name ballsquad_db_appc mysql
 ```
 Finally you can run the java application
 ```bash
-  docker run -d -it -p 8081:8080 --network ballsquad_network --name ballsquad_java_appc ofaydn/ballsquad_java_app
+docker run -d -it -p 8081:8080 --network ballsquad_network --name ballsquad_java_appc ofaydn/ballsquad_java_app
 ```
 ## API Usage
 BallSquad API offers 2 different endpoints which both are POST requests.
@@ -32,7 +32,7 @@ BallSquad API offers 2 different endpoints which both are POST requests.
 This endpoint allows you to make queries for authors in database. If database doesn't contain queried author, it will fetch from OpenLibrary website and save it to the database for later searches.
 
 ```http
-  POST /authors?name=${name}
+POST /authors?name=${name}
 ```
 
 | Parameter | Type     |  Description                |
@@ -43,7 +43,7 @@ This endpoint allows you to make queries for authors in database. If database do
 This endpoint brings you works of the author you've queried. Same as first endpoint if author works are not in the database, they are saved to database.
 
 ```http
-  POST /works/${authorKey}
+POST /works/${authorKey}
 ```
 
 | Parameter | Type     | Description                       |

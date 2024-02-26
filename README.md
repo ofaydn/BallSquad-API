@@ -1,6 +1,6 @@
 
 # BallSquad API
-Purpose of developing this API is to prove technical skills for a basic back-end position. Project includes fetching data from external API service using Feign Client, saving those datas to a local MySql server, and returning those datas to the user when needed all of the logic was written in Java language. I've used Liquibase as schema management tool in this project, which made a lot easier managing database tables. 
+Purpose of developing this API is to prove technical skills for a basic back-end position. Project includes fetching data from external API service using Feign Client, saving those datas to a local MySql server, and returning those datas to the user when needed all of the logic was written in Java language. I've used Liquibase as schema management tool in this project, which made a lot easier managing database tables. I've used Docker and it made a lot easier to run the project from different machines.
 
 ## Running the project
 In order to run this project in your local machine you just need Docker installed on your machine. 

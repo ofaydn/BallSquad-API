@@ -1,10 +1,9 @@
-package com.example.ballsquadapi.services;
-import com.example.ballsquadapi.clients.OpenLibraryClient;
-import com.example.ballsquadapi.dtos.authors.AuthorDoc;
-import com.example.ballsquadapi.dtos.authors.AuthorResponse;
-import com.example.ballsquadapi.dtos.works.AuthorWorksResponse;
-import com.example.ballsquadapi.entities.Author;
-import com.example.ballsquadapi.repositories.AuthorRepository;
+package com.ballsquadapi.services;
+import com.ballsquadapi.clients.OpenLibraryClient;
+import com.ballsquadapi.dtos.authors.AuthorDoc;
+import com.ballsquadapi.dtos.authors.AuthorResponse;
+import com.ballsquadapi.entities.Author;
+import com.ballsquadapi.repositories.AuthorRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

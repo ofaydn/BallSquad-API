@@ -1,6 +1,6 @@
-package com.example.ballsquadapi.controllers;
-import com.example.ballsquadapi.entities.AuthorWorks;
-import com.example.ballsquadapi.services.WorkService;
+package com.ballsquadapi.controllers;
+import com.ballsquadapi.entities.AuthorWorks;
+import com.ballsquadapi.services.WorkService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Objects;

@@ -1,12 +1,9 @@
-package com.example.ballsquadapi;
+package com.ballsquadapi;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.jdbc.DataSourceBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
-import javax.sql.DataSource;
 
 import static java.lang.Thread.sleep;
 

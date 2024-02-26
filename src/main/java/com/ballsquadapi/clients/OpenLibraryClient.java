@@ -1,6 +1,6 @@
-package com.example.ballsquadapi.clients;
-import com.example.ballsquadapi.dtos.authors.AuthorResponse;
-import com.example.ballsquadapi.dtos.works.AuthorWorksResponse;
+package com.ballsquadapi.clients;
+import com.ballsquadapi.dtos.authors.AuthorResponse;
+import com.ballsquadapi.dtos.works.AuthorWorksResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

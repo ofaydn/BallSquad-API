@@ -1,6 +1,6 @@
-package com.example.ballsquadapi.repositories;
+package com.ballsquadapi.repositories;
 
-import com.example.ballsquadapi.entities.AuthorWorks;
+import com.ballsquadapi.entities.AuthorWorks;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

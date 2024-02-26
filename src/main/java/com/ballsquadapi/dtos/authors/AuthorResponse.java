@@ -1,4 +1,4 @@
-package com.example.ballsquadapi.dtos.authors;
+package com.ballsquadapi.dtos.authors;
 
 import java.util.List;
 

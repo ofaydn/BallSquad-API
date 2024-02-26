@@ -20,13 +20,8 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: ballsquad
     container_name: ballsquad_db_appc
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
   app:
-    image: ofaydn/ballsquad_java_app
+    image: ofaydn/ballsquad_java_app:latest
     ports:
       - "8081:8080"
     depends_on:
@@ -35,6 +30,7 @@ networks:
   default:
     name: ballsquad_network
     driver: bridge
+
 ```
 
 ## API Usage

@@ -15,7 +15,7 @@ docker-compose up
 ```
 And you are good to go!
 ## API Usage
-BallSquad API offers 2 different endpoints which both are POST requests.
+BallSquad API offers 2 different endpoints which both are POST requests. Also application is accessible from 8081 port as default.
 
 #### 1) Get authors
 This endpoint allows you to make queries for authors in database. If database doesn't contain queried author, it will fetch from OpenLibrary website and save it to the database for later searches.

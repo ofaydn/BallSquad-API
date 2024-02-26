@@ -32,7 +32,11 @@ networks:
     driver: bridge
 
 ```
-
+Now run docker-compose file.
+```bash
+docker-compose up
+```
+And you are good to go!
 ## API Usage
 BallSquad API offers 2 different endpoints which both are POST requests.
 

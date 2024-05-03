@@ -19,7 +19,7 @@ public class BallSquadApiApplication {
                 SpringApplication.run(BallSquadApiApplication.class, args);
                 connection = true;
             } else {
-                System.out.println("Database connection failed. Trying again.");
+                System.out.println("Database connection failed. Trying again. Test 10 seconds.");
                 sleep(10000);
             }
         }
